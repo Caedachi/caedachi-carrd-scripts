@@ -1,45 +1,52 @@
-function responseListener() {
-  // get required dom elements
-  let statusElement = document.getElementById('text37');
-  let commissionFormContainer = document.getElementById('container03');
-  let commissionClosedContainer = document.getElementById('container04');
+(function() {
+  var statusId = 'text37';
+  var commissionFormId = 'container03';
+  var commissionClosedId = 'container04';
 
-  let response = JSON.parse(this.responseText);
-  let description = response.desc.toLowerCase();
-  statusElement.innerHTML = `Status: ${description}`;
+  function responseListener() {
+    // get required dom elements
+    let statusElement = document.getElementById(statusId);
+    let commissionFormContainer = document.getElementById(commissionFormId);
+    let commissionClosedContainer = document.getElementById(commissionClosedId);
 
-  // show/hide commission form container based on status
-  let commissionsOpen = description.includes('open');
-  commissionFormContainer.style.display = commissionsOpen ? 'inline' : 'none';
-  commissionClosedContainer.style.display = !commissionsOpen ? 'inline' : 'none';
-}
+    let response = JSON.parse(this.responseText);
+    let description = response.desc.toLowerCase();
+    statusElement.innerHTML = `Status: ${description}`;
 
-function createRequest() {
-  let req = new XMLHttpRequest();
-  req.addEventListener('load', responseListener);
-  // if for some reason i change the trello status card name, i'll have to update this endpoint here
-  req.open('GET', 'https://trello.com/card/602c0c00f788320d4df57d97/status.json');
-  return req;
-}
+    // show/hide commission form container based on status
+    let commissionsOpen = description.includes('open');
+    commissionFormContainer.style.display = commissionsOpen ? 'inline' : 'none';
+    commissionClosedContainer.style.display = !commissionsOpen ? 'inline' : 'none';
+  }
 
-function main() {
-  let req = createRequest();
-  req.send();
-}
+  function createRequest() {
+    let req = new XMLHttpRequest();
+    req.addEventListener('load', responseListener);
+    // if for some reason i change the trello status card name, i'll have to update this endpoint here
+    req.open('GET', 'https://trello.com/card/602c0c00f788320d4df57d97/status.json');
+    return req;
+  }
 
-window.onload = function() {
-  // owo
-  console.log("owo what's this??");
+  function main() {
+    let req = createRequest();
+    req.send();
+  }
 
-  // get element references to commission form containers
-  let commissionFormContainer = document.getElementById('container03');
-  let commissionClosedContainer = document.getElementById('container04');
+  window.onload = function() {
+    // owo
+    console.log("owo what's this??");
 
-  // initially hide commission form containers onload
-  commissionFormContainer.style.display = 'none';
-  commissionClosedContainer.style.display = 'none';
+    // get element references to commission form containers
+    let commissionFormContainer = document.getElementById(commissionFormId);
+    let commissionClosedContainer = document.getElementById(commissionClosedId);
 
-  // get commission status and fetch status every 60 seconds
-  main();
-  setInterval(main, 60000);
-}
+    // initially hide commission form containers onload
+    commissionFormContainer.style.display = 'none';
+    commissionClosedContainer.style.display = 'none';
+
+    // get commission status and fetch status every 60 seconds
+    main();
+    setInterval(main, 60000);
+  }
+})();
+
