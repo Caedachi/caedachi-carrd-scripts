@@ -10,19 +10,17 @@ body::before {
 }
 
 @-webkit-keyframes mint {
-    0%{background-position:40% 0%}
-    50%{background-position:61% 100%}
-    100%{background-position:40% 0%}
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
 }
-
 @-moz-keyframes mint {
-    0%{background-position:40% 0%}
-    50%{background-position:61% 100%}
-    100%{background-position:40% 0%}
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
 }
-
 @keyframes mint {
-    0%{background-position:40% 0%}
-    50%{background-position:61% 100%}
-    100%{background-position:40% 0%}
+    0%{background-position:0% 51%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 51%}
 }
