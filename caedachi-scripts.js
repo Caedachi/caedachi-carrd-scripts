@@ -25,7 +25,7 @@
     document.title = title;
 
     main();
-    setInterval(main, 750);
+    setInterval(main, 1000);
   }
 })();
 
