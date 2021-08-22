@@ -3,12 +3,12 @@
 
   function main() {
     title = title.slice(1) + title.slice(0, 1);
-    window.title = title;
+    document.title = title;
   }
 
   window.onload = function () {
     console.log("owo what's this??");
-    window.title = title;
+    document.title = title;
 
     main();
     setInterval(main, 1000);
