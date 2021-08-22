@@ -1,8 +1,9 @@
 (function() {
-  let title = "WELCOME TO THE SHARK ZONE • ";
+  let title = "• WELCOME TO THE SHARK ZONE ";
+  title = title.replaceAll(' ', '\xa0');
 
   function main() {
-    title = title.slice(1) + title.slice(0, 1);
+    title = title.slice(2) + title.slice(0, 2);
     document.title = title;
   }
 
@@ -11,6 +12,6 @@
     document.title = title;
 
     main();
-    setInterval(main, 1000);
+    setInterval(main, 750);
   }
 })();
