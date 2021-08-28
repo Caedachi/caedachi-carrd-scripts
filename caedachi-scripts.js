@@ -34,8 +34,6 @@
     return req;
   }
 
-  function 
-
   window.onload = function () {
     console.log(owo.join('\n'));
     console.log("what's this??");
